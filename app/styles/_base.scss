@@ -1,0 +1,52 @@
+$list-group-dark-link-color: #aaa;
+$list-group-dark-hover-bg: #222;
+$list-group-dark-bg: #444;
+$list-group-text-color: #aaa;
+$list-group-text-selected-color: #fff;
+$btn-dark-bg: #444;
+$text-color-dark-bg:#aaa;
+$text-color-selected-dark-bg:#fff;
+$btn-dark-border: #222;
+
+.list-group--dark {
+
+  background-color: $list-group-dark-bg;
+  color: $list-group-text-color;
+
+  .list-group-item {
+    background-color: $list-group-dark-bg;
+    border: 1px solid #000;
+  }
+
+  // Linked list items
+  //
+  // Use anchor elements instead of `li`s or `div`s to create linked list items.
+  // Includes an extra `.active` modifier class for showing selected items.
+
+  a.list-group-item {
+    color: $list-group-dark-link-color;
+
+    // Hover state
+    &:hover,
+    &:focus {
+      background-color: $list-group-dark-bg;
+      color: $list-group-text-selected-color;
+    }
+
+    &.selected {
+      background-color: $list-group-dark-hover-bg;
+      color: $list-group-text-selected-color;
+    }
+  }
+}
+
+
+.btn-dark {
+  @include button-variant($text-color-dark-bg, $btn-dark-bg, $btn-dark-border);
+
+  &.is-active {
+    color: $text-color-selected-dark-bg;
+    background-color: darken($btn-dark-bg, 10%);
+    border-color: darken($btn-dark-border, 12%);
+  }
+}

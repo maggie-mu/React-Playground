@@ -1,0 +1,317 @@
+$circle-size: 1px;
+$circle-large-size: 20px;
+$circle-margin-top: -10px;
+$circle-margin-left: 10px;
+$circle-bg-color: firebrick;
+
+$circle-inner-large-size: 14px;
+$circle-inner-margin-top: 7px;
+$circle-inner-margin-left: 7px;
+$circle-inner-bg-color: white;
+
+$milestone-card-padding: 10px;
+
+
+@-webkit-keyframes fadeIn {
+  0% {
+    display: block;
+    opacity: 0;
+  }
+  30% {
+    display: block;
+    opacity: .5;
+  }
+  60% {
+    display: block;
+    opacity: .8;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    display: block;
+    opacity: 0;
+  }
+  30% {
+    display: block;
+    opacity: .5;
+  }
+  60% {
+    display: block;
+    opacity: .8;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@keyframes circle-sizeIncrease {
+  100% {
+    width: $circle-large-size;
+    height: $circle-large-size;
+    margin-top: -20px;
+    margin-left: 0;
+  }
+}
+
+@keyframes circle-inner-sizeIncrease {
+  100% {
+    width: $circle-inner-large-size;
+    height: $circle-inner-large-size;
+    margin-top: 3px;
+    margin-left: 3px;
+  }
+}
+
+@keyframes milestone-dash-animation {
+  100% {
+    height: 30px;
+  }
+}
+
+@mixin milestone-card-animation($duration, $delay) {
+  .milestone-circle {
+    -webkit-animation: circle-sizeIncrease $duration $delay ease-out forwards;
+    animation: circle-sizeIncrease $duration $delay ease-out forwards;
+  }
+
+  .milestone-circle-inner {
+    -webkit-animation: circle-inner-sizeIncrease $duration $delay ease-out forwards;
+    animation: circle-inner-sizeIncrease $duration $delay ease-out forwards;
+  }
+
+  .milestone-dash {
+    animation: milestone-dash-animation $duration $delay ease forwards;
+  }
+
+  .milestone {
+    -webkit-animation: fadeIn $duration $delay ease-out forwards;
+    animation: fadeIn $duration $delay ease-out forwards;
+  }
+}
+
+
+
+.milestones {
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+
+  .milestone-circle {
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: 100%;
+    background-color: $circle-bg-color;
+    position: relative;
+  }
+
+  .milestone-circle-inner {
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: $circle-inner-bg-color;
+    margin-top: 0;
+    margin-left: 0;
+    position: absolute;
+  }
+
+  .milestone-title {
+    background-color: firebrick;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color: white;
+    border-top-left-radius: 5pt;
+    border-top-right-radius: 5pt;
+    margin-top: -1px;
+  }
+
+  .milestone-list {
+    width: 100%;
+  }
+
+  .milestone {
+    border: 1px solid #ccc;
+    border-radius: 6pt;
+    opacity: 0;
+  }
+
+  .milestone-card {
+    float: left;
+    padding: $milestone-card-padding;
+
+    p {
+      padding: $milestone-card-padding;
+    }
+  }
+
+  @media (min-width: 769px) {
+
+    .milestone-circle {
+      margin-top: $circle-margin-top;
+      margin-left: $circle-margin-left;
+    }
+
+
+    .milestones-line {
+      width: 100%;
+      border-bottom: 2px solid #555;
+    }
+
+
+    .milestone-dash {
+      height: 1px;
+      width: 1px;
+      margin-left: 10px;
+      border-left: 1px dashed firebrick;
+    }
+
+    .milestone-card:nth-child(1) {
+      @include milestone-card-animation(1s, .1s);
+    }
+
+    .milestone-card:nth-child(2) {
+      @include milestone-card-animation(1s, .5s);
+    }
+
+    .milestone-card:nth-child(3) {
+      @include milestone-card-animation(1s, 1s);
+    }
+
+    .milestone-card:nth-child(4) {
+      @include milestone-card-animation(1s, 1.5s);
+    }
+
+    .milestone-card:nth-child(5) {
+      @include milestone-card-animation(1s, 2s);
+    }
+
+    /* one item */
+    .milestone-card:first-child:nth-last-child(1) {
+      width: 100%;
+    }
+
+    /* two items */
+    .milestone-card:first-child:nth-last-child(2),
+    .milestone-card:first-child:nth-last-child(2) ~ .milestone-card {
+      width: 50%;
+    }
+
+    /* three items */
+    .milestone-card:first-child:nth-last-child(3),
+    .milestone-card:first-child:nth-last-child(3) ~ .milestone-card {
+      width: 33.3333%;
+    }
+
+    /* four items */
+    .milestone-card:first-child:nth-last-child(4),
+    .milestone-card:first-child:nth-last-child(4) ~ .milestone-card {
+      width: 25%;
+    }
+
+    /* five items */
+    .milestone-card:first-child:nth-last-child(5),
+    .milestone-card:first-child:nth-last-child(5) ~ .milestone-card {
+      width: 20%;
+    }
+
+    /* six items */
+    .milestone-card:first-child:nth-last-child(6),
+    .milestone-card:first-child:nth-last-child(6) ~ .milestone-card {
+      width: 16.67%;
+    }
+
+    /* sever items */
+    .milestone-card:first-child:nth-last-child(7),
+    .milestone-card:first-child:nth-last-child(7) ~ .milestone-card {
+      width: 14.28%;
+    }
+
+    .milestone-card.first-item {
+      transition: all 2s linear;
+      transition-delay: 2s;
+      display: block;
+    }
+  }
+
+
+  @media (max-width: $screen-sm-min) {
+
+    .milestone-list {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .milestones-line {
+      display:none;
+    }
+
+    .milestone-card {
+       clear: both;
+       padding: 0 0 30px;
+       border-left: 2px solid firebrick;
+    }
+
+    .milestone-circle {
+      float: left;
+
+    }
+
+    .milestone-dash {
+      float: left;
+      width: 0;
+      height:1px;
+      margin-top: 10px;
+      border-top: 1px dashed firebrick;
+    }
+
+    .milestone {
+      float: left;
+      width: 200px;
+      opacity: 0;
+    }
+
+    @keyframes circle-sizeIncrease-sm {
+      100% {
+        width: $circle-large-size;
+        height: $circle-large-size;
+        margin-top: 0;
+        margin-left: -10px;
+      }
+    }
+
+
+    @keyframes milestone-dash-animation-sm {
+      100% {
+        width: 30px;
+      }
+    }
+
+    .milestone-card.active {
+      .milestone-circle {
+        -webkit-animation: circle-sizeIncrease-sm 1s ease-out forwards;
+        animation: circle-sizeIncrease-sm 1s ease-out forwards;
+      }
+
+      .milestone-circle-inner {
+        -webkit-animation: circle-inner-sizeIncrease 1s ease-out forwards;
+        animation: circle-inner-sizeIncrease 1s ease-out forwards;
+      }
+
+      .milestone-dash {
+        animation: milestone-dash-animation-sm 1s ease forwards;
+      }
+
+      .milestone {
+        -webkit-animation: fadeIn 1s  ease-out forwards;
+        animation: fadeIn 1s ease-out forwards;
+      }
+    }
+  }
+}
+
+

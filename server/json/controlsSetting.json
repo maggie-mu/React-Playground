@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "key": "piano",
+      "name": "Piano",
+      "description": "This control plays music notes on a piano"
+    },
+    {
+      "key": "milestones",
+      "name": "Milestones",
+      "description": "This control shows different events happened during the life time. It applies animations to make the event shows in sequence. In the mobile mode, it shows the event when you scrolling. "
+    },
+    {
+      "key": "avatar",
+      "name": "Avatar",
+      "description": "This control gives you avatars with different design. "
+    },
+    {
+      "key": "drawingPad",
+      "name": "Drawing Pad",
+      "description": "This control allows you to add free drawing and text on top of a image. The image can also be saved after drawing.",
+      "dependencies": "fabric.js",
+      "imageUrl": "http://res.cloudinary.com/maggiemu/image/upload/v1433393053/saving_ejutbm.png"
+    }
+  ]
+}
