@@ -47,12 +47,12 @@ var Key = connectToStores(React.createClass({
 
 var Keyboard = React.createClass({
   propTypes: {
-    keys: React.PropTypes.array
+    keynotes: React.PropTypes.array
   },
 
   render: function() {
     return (<ul className='keyboard'>
-              {this.props.keys.map(function(key){
+              {this.props.keynotes.map(function(key){
                 return <Key key={key.id} settings={key}></Key>
               })}
             </ul>)

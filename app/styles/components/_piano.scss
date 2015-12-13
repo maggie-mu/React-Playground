@@ -4,13 +4,18 @@ $active-font-color: #E67E22;
 $piano-control-panel-color: #F2F1EE;
 
 $key-height: 250px;
-$white-key-width:  80px;
+$white-key-width:  8.33%;
 $black-key-width:  30px;
+
+$music-note-line-height: 15px;
 
 .piano {
   background-image: url('../images/piano-bg.png');
 }
 
+/**
+Styles of piano-control-panel
+**/
 .piano-control-panel {
    padding: 20px 50px;
 }
@@ -51,21 +56,25 @@ $black-key-width:  30px;
   color: $piano-control-panel-color;
 }
 
-.btn-play {
+.piano-control-panel .btn-play {
   border: 1px solid $piano-control-panel-color;
 }
 .piano-control-panel .btn:hover {
   color: white;
 }
 
+
+/**
+Styles of keyboard
+**/
 ul.keyboard {
   list-style: none;
-  padding-left: 20px;
-  margin: 0 30px;
+  padding-left: 0px;
+  margin: 0 50px;
 
   li {
     display: inline-block;
-    height:$key-height;
+    height: $key-height;
     line-height: 450px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
@@ -86,9 +95,9 @@ ul.keyboard {
   }
 
   .whiteKey {
-    width: 7%;
+    width: $white-key-width;
     background: white;
-    border: 1px solid #444;
+    border: 1px solid $whiteKey-border;
     text-align: center;
 
     span {
@@ -109,6 +118,101 @@ ul.keyboard {
     background: black;
     border: 1px solid #444;
   }
+}
 
+/**
+Styles of music-notes
+**/
+.music-notes {
+  position: relative;
+  margin: 30px 0;
+}
+ul.music-notes-lines {
+  list-style: none;
+  margin: 0 50px;
+  padding-left: 0;
+  li {
+    height: 15px;
+    border-top: 1px solid $whiteKey-border;
+  }
+}
 
+ul.music-notes-notes {
+  list-style: none;
+  position:absolute;
+  left: 10px;
+  margin: 0 30px;
+  padding-left: 20px;
+  right: 0;
+  bottom: 0;
+  top: 0;
+
+  li.whiteKey  {
+    display: block;
+    float: left;
+    text-align: center;
+    border: 1px solid transparent;
+    width: $white-key-width;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  li.blackKey {
+    display: block;
+    float: left;
+  }
+
+  img {
+    height: 100%;
+    width: 15px;
+    margin-left: -15px;
+  }
+
+  img.C4 {
+    margin-top: $music-note-line-height*1.5;
+  }
+
+  img.D4 {
+    margin-top: $music-note-line-height;
+  }
+
+  img.E4 {
+    margin-top: $music-note-line-height/2;
+  }
+
+  img.F4 {
+    margin-top: 0;
+  }
+
+  img.G4 {
+    margin-top: -$music-note-line-height;
+  }
+
+  img.A4 {
+    margin-top: -$music-note-line-height*1.5;
+  }
+
+  img.B4 {
+    margin-top: -$music-note-line-height*2;
+  }
+
+  img.C5 {
+    margin-top: -$music-note-line-height/2;
+  }
+
+  img.D5 {
+    margin-top: -$music-note-line-height;
+  }
+
+  img.E5 {
+    margin-top: -$music-note-line-height*1.5;
+  }
+
+  img.F5 {
+    margin-top: -$music-note-line-height*2;
+  }
+
+  img.G5 {
+    margin-top: -$music-note-line-height*2.5;
+  }
 }
