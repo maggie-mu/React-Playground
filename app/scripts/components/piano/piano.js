@@ -16,20 +16,21 @@ var Piano = React.createClass({
     }
   },
 
-  handleStop: function() {
-     PianoActions.stopMusic(this.props.currentMusic, this.props.currentIndex);
-  },
+  handleMusicPlayer: function() {
+     if(this.props.isPlaying) {
+       PianoActions.stopMusic(this.props.currentMusic, this.props.currentIndex);
+     } else {
+       PianoActions.playMusic(this.props.currentMusic, this.props.currentIndex);
+     }
 
-  handlePlay: function() {
-     PianoActions.playMusic(this.props.currentMusic, this.props.currentIndex);
   },
 
   render: function() {
     return (<div className="piano">
               <div className="piano-control-panel">
-                  <div className="piano-control-panel-screen col-sm-3">{this.props.currentMusic.name}</div>
-                  <button className="btn btn-step" onClick={this.handleStop}><span className="glyphicon glyphicon glyphicon-step-backward"></span></button>
-                  <button className="btn btn-play" onClick={this.handlePlay}>
+                  <div className="piano-control-panel-screen col-sm-3"><span>{this.props.currentMusic.name}</span></div>
+                  <button className="btn btn-step"><span className="glyphicon glyphicon glyphicon-step-backward"></span></button>
+                  <button className="btn btn-play" onClick={this.handleMusicPlayer}>
                       { this.props.isPlaying? <span className="glyphicon glyphicon-stop"></span>: <span className="glyphicon glyphicon-play"></span>}
                   </button>
                   <button className="btn btn-step"><span className="glyphicon glyphicon glyphicon-step-forward"></span></button>

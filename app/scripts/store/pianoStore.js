@@ -13,15 +13,22 @@ class PianoStore {
     }
 
     this.bindListeners({
-      handlePlayMusic: PianoActions.playMusic
+      handlePlayMusic: PianoActions.playMusic,
+      handleStopMusic: PianoActions.stopMusic
     });
   }
 
   handlePlayMusic(options) {
     this.setState({
-       isPlaying: !this.isPlaying,
+       isPlaying: true,
        currentMusic: MusicSheets[options.currentIndex],
        currentIndex: options.currentIndex
+    })
+  }
+
+  handleStopMusic(options) {
+    this.setState({
+      isPlaying: false
     })
   }
 }

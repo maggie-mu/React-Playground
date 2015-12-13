@@ -1,6 +1,7 @@
 $whiteKey-bg: white;
 $whiteKey-border: #444;
 $active-font-color: #E67E22;
+$piano-control-panel-color: #F2F1EE;
 
 $key-height: 250px;
 $white-key-width:  80px;
@@ -14,21 +15,44 @@ $black-key-width:  30px;
    padding: 20px 50px;
 }
 
+@keyframes  moving-text  {
+    0%  {
+      left: 0;
+    }
+    50%{
+      left: 35%;
+    }
+    100% {
+      left: 0;
+    }
+}
+
 .piano-control-panel-screen {
-   background-color: #c4c4c4;
+   background-color: $piano-control-panel-color;
    border-radius: 5px;
    height: 50px;
+   position: relative;
+
+   span{
+     position: absolute;
+     font-size: 1.2rem;
+     color: #491904;
+     padding-left: 15px;
+     top: 18px;
+     text-shadow: 0.5px 0.5px 0 #491904;
+     animation: moving-text 5s ease-out infinite;
+   }
 }
 
 .piano-control-panel .btn {
   margin-left: 10px;
-  margin-top: 15px;
+  margin-top: 10px;
   background-color: transparent;
-  color: #c4c4c4;
+  color: $piano-control-panel-color;
 }
 
 .btn-play {
-  border: 1px solid #c4c4c4;
+  border: 1px solid $piano-control-panel-color;
 }
 .piano-control-panel .btn:hover {
   color: white;

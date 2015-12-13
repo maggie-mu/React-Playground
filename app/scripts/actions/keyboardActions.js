@@ -8,7 +8,7 @@ class KeyboardAction {
   }
 
   onKeyUp(key) {
-    Player.stop(key);
+    Player.finish();
     return {key}
   }
 
