@@ -11,25 +11,27 @@ $music-note-line-height: 15px;
 
 .piano {
   background-image: url('../images/piano-bg.png');
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 /**
 Styles of piano-control-panel
 **/
 .piano-control-panel {
-   padding: 20px 50px;
+   padding: 30px 50px;
 }
 
-@keyframes  moving-text  {
-    0%  {
-      left: 0;
-    }
-    50%{
-      left: 35%;
-    }
-    100% {
-      left: 0;
-    }
+@keyframes moving-text {
+ 0%   {
+     transform: translateX(0);
+ }
+ 50% {
+     transform: translateX(50%);
+ }
+ 100% {
+     transform: translateX(0);
+ }
 }
 
 .piano-control-panel-screen {
@@ -37,15 +39,21 @@ Styles of piano-control-panel
    border-radius: 5px;
    height: 50px;
    position: relative;
+   overflow: hidden;
 
    span{
      position: absolute;
-     font-size: 1.2rem;
-     color: #491904;
+     font-size: 1.5rem;
+     font-style: italic;
+     font-weight: bold;
+     color: $active-font-color;
      padding-left: 15px;
      top: 18px;
-     text-shadow: 0.5px 0.5px 0 #491904;
-     animation: moving-text 5s ease-out infinite;
+     width: 100%;
+     height: 100%;
+     text-align: left;
+     transform:translateX(0);
+     animation: moving-text 10s linear infinite;
    }
 }
 
@@ -162,57 +170,61 @@ ul.music-notes-notes {
     float: left;
   }
 
-  img {
-    height: 100%;
-    width: 15px;
-    margin-left: -15px;
+  li.active {
+    img{
+      width: 25px;
+      fill: #CC5533;
+    }
   }
 
-  img.C4 {
+
+  //svg {width: 100%; height: auto;}
+
+  .C4 {
     margin-top: $music-note-line-height*1.5;
   }
 
-  img.D4 {
+  .D4 {
     margin-top: $music-note-line-height;
   }
 
-  img.E4 {
+  .E4 {
     margin-top: $music-note-line-height/2;
   }
 
-  img.F4 {
+  .F4 {
     margin-top: 0;
   }
 
-  img.G4 {
+  .G4 {
     margin-top: -$music-note-line-height;
   }
 
-  img.A4 {
+  .A4 {
     margin-top: -$music-note-line-height*1.5;
   }
 
-  img.B4 {
+  .B4 {
     margin-top: -$music-note-line-height*2;
   }
 
-  img.C5 {
+  .C5 {
     margin-top: -$music-note-line-height/2;
   }
 
-  img.D5 {
+  .D5 {
     margin-top: -$music-note-line-height;
   }
 
-  img.E5 {
+  .E5 {
     margin-top: -$music-note-line-height*1.5;
   }
 
-  img.F5 {
+  .F5 {
     margin-top: -$music-note-line-height*2;
   }
 
-  img.G5 {
+  .G5 {
     margin-top: -$music-note-line-height*2.5;
   }
 }

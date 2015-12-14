@@ -27,24 +27,25 @@ class PianoActions {
        if(Player.mode === 'play') {
          key = getKey(keyId);
          key.isSelected = true;
-         Player.start(key, i);
+         Player.startNote(key, i);
          actions.onKeyPress(key);
 
          stopTimeout = setTimeout(function () {
            key.isSelected = false;
-           Player.finish();
+           Player.finishNote();
            actions.onKeyUp(key);
 
            if (i < currentMusic.notes.length - 1) {
              playMusic(currentMusic.notes[i + 1].note, i + 1);
-           }
-           else {
-             actions.stopMusic(currentMusic, currentIndex);
+           } else {
+             actions.pauseMusic(currentMusic, currentIndex);
+             Player.finish();
            }
          }, 500);
        }
     }
-    if(Player.currentKey) {
+
+    if(Player.currentIndex > -1) {
       playMusic(Player.currentKey.id, Player.currentIndex);
     } else {
       playMusic(currentMusic.notes[0].note, 0);
@@ -52,11 +53,11 @@ class PianoActions {
     return {currentIndex};
   }
 
-  stopMusic(currentMusic, currentIndex) {
-    Player.finish();
+  pauseMusic(currentMusic, currentIndex) {
+    Player.finishNote();
     this.actions.onKeyUp(Player.currentKey);
 
-    Player.stop();
+    Player.pause();
     return {currentIndex};
   }
 

@@ -18,11 +18,11 @@ var Keynotes = [
       {id: '55', label: 'E5', type: 'whiteKey', direction:'up', frequency: '659.25'},
       {id: '56', label: 'F5', type: 'whiteKey', direction:'up', frequency: '698.46'},
       {id: '57', label: '', type: 'blackKey', direction:'down', frequency: ''},
-      {id: '58', label: 'G5', type: 'whiteKey', direction:'up',  frequency: '783.99'},
-      // {id: '59', label: '', type: 'blackKey', direction:'down', frequency: ''},
-      // {id: '510', label: 'A5', type: 'whiteKey', direction:'up', frequency: '880.00'},
-      // {id: '511', label: '', type: 'blackKey', direction:'down', frequency: ''},
-      // {id: '512', label: 'B5', type: 'whiteKey', direction:'up', frequency: '987.77'}
+      {id: '58', label: 'G5', type: 'whiteKey', direction:'up',  frequency: '783.99'}
+    //   // {id: '59', label: '', type: 'blackKey', direction:'down', frequency: ''},
+    //   // {id: '510', label: 'A5', type: 'whiteKey', direction:'up', frequency: '880.00'},
+    //   // {id: '511', label: '', type: 'blackKey', direction:'down', frequency: ''},
+    //   // {id: '512', label: 'B5', type: 'whiteKey', direction:'up', frequency: '987.77'}
     ];
 
 

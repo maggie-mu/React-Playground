@@ -3,12 +3,12 @@ var Player = require('./Player');
 
 class KeyboardAction {
   onKeyPress(key) {
-    Player.start(key);
+    Player.startNote(key);
     return {key}
   }
 
   onKeyUp(key) {
-    Player.finish();
+    Player.finishNote();
     return {key}
   }
 

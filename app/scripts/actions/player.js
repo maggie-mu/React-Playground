@@ -13,9 +13,19 @@ Player.prototype.play = function() {
   this.mode = 'play';
 }
 
-Player.prototype.start = function(key, index) {
+Player.prototype.pause = function() {
+  this.mode = 'pause';
+};
+
+Player.prototype.finish = function() {
+  this.currentKey = null;
+  this.currentIndex = -1;
+    this.mode = null;
+}
+
+Player.prototype.startNote = function(key, index) {
   this.currentKey = key;
-  this.currentIndex = index;
+  this.currentIndex = index || this.currentIndex;
 
   this.osc = this.audioCtx.createOscillator();
   this.osc.type = 'triangle';
@@ -25,14 +35,8 @@ Player.prototype.start = function(key, index) {
   this.osc.connect(this.audioCtx.destination);
 };
 
-Player.prototype.finish = function() {
+Player.prototype.finishNote = function() {
   this.osc.stop();
 };
-
-Player.prototype.stop = function() {
-  this.mode = 'stop';
-};
-
-
 
 module.exports = new Player();

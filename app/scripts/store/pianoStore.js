@@ -14,7 +14,7 @@ class PianoStore {
 
     this.bindListeners({
       handlePlayMusic: PianoActions.playMusic,
-      handleStopMusic: PianoActions.stopMusic
+      handlePauseMusic: PianoActions.pauseMusic
     });
   }
 
@@ -26,7 +26,7 @@ class PianoStore {
     })
   }
 
-  handleStopMusic(options) {
+  handlePauseMusic(options) {
     this.setState({
       isPlaying: false
     })
