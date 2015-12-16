@@ -25,14 +25,33 @@ var Piano = React.createClass({
      }
   },
 
+  handleNextMusic: function() {
+    //loop the music
+    var currentIndex = this.props.currentIndex,
+        nextIndex = ( currentIndex < this.props.musicList.length - 1) ? currentIndex + 1: 0;
+    PianoActions.nextMusic(this.props.musicList[nextIndex], nextIndex);
+  },
+
+  handlePreviousMusic: function() {
+    var currentIndex = this.props.currentIndex,
+        previousIndex = currentIndex === 0 ? (this.props.musicList.length - 1): currentIndex - 1;
+    PianoActions.previousMusic(this.props.musicList[previousIndex], previousIndex);
+  },
+
   renderPianoControlPanel: function() {
     return (<div className="piano-control-panel">
-              <div className="piano-control-panel-screen col-sm-6"><span>{this.props.currentMusic.name}</span></div>
-              <button className="btn btn-step"><span className="glyphicon glyphicon glyphicon-step-backward"></span></button>
+              <div className="piano-control-panel-screen col-sm-6">
+                <span>{this.props.currentMusic.name}</span>
+              </div>
+              <button className="btn btn-step" onClick={this.handlePreviousMusic}>
+                <span className="glyphicon glyphicon-step-backward">
+              </span></button>
               <button className="btn btn-play" onClick={this.handleMusicPlayer}>
-                  { this.props.isPlaying? <span className="glyphicon glyphicon-stop"></span>: <span className="glyphicon glyphicon-play"></span>}
+                  { this.props.isPlaying? <span className="glyphicon glyphicon-stop"></span>:<span className="glyphicon glyphicon-play"></span>}
               </button>
-              <button className="btn btn-step"><span className="glyphicon glyphicon glyphicon-step-forward"></span></button>
+              <button className="btn btn-step">
+                  <span className="glyphicon glyphicon-step-forward" onClick={this.handleNextMusic}></span>
+              </button>
             </div>);
   },
 

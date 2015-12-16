@@ -28,6 +28,58 @@ var MusicSheets = [
       {note: '43'},
       {note: '41'}
     ]
+  },
+  { name: 'Twinkle Twinkle Little Star',
+    notes: [
+      {note: '41'},
+      {note: '41'},
+      {note: '48'},
+      {note: '48'},
+      {note: '410'},
+      {note: '410'},
+      {note: '48'},
+
+      {note: '46'},
+      {note: '46'},
+      {note: '45'},
+      {note: '45'},
+      {note: '43'},
+      {note: '43'},
+      {note: '41'},
+
+      {note: '48'},
+      {note: '48'},
+      {note: '46'},
+      {note: '46'},
+      {note: '45'},
+      {note: '45'},
+      {note: '43'},
+
+      {note: '48'},
+      {note: '48'},
+      {note: '46'},
+      {note: '46'},
+      {note: '45'},
+      {note: '45'},
+      {note: '43'},
+
+      {note: '41'},
+      {note: '41'},
+      {note: '48'},
+      {note: '48'},
+      {note: '410'},
+      {note: '410'},
+      {note: '48'},
+
+      {note: '46'},
+      {note: '46'},
+      {note: '45'},
+      {note: '45'},
+      {note: '43'},
+      {note: '43'},
+      {note: '41'},
+
+    ]
   }
 ]
 

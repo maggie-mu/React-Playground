@@ -3,18 +3,9 @@
 var React = require('react'),
     classNames = require('classnames'),
     connectToStores = require('../../../../node_modules/alt/utils/connectToStores'),
-    KeyboardActions = require('../../actions/keyboardActions'),
-    KeyboardStore = require('../../store/KeyboardStore')
+    KeyboardActions = require('../../actions/keyboardActions');
 
-var Key = connectToStores(React.createClass({
-  statics: {
-    getStores() {
-      return [KeyboardStore]
-    },
-    getPropsFromStores() {
-      return KeyboardStore.getState()
-    }
-  },
+var Key = React.createClass({
 
   propTypes: {
     settings: React.PropTypes.object
@@ -22,14 +13,12 @@ var Key = connectToStores(React.createClass({
 
   handleKeyUp: function(selectedKey) {
     return function() {
-      selectedKey.isSelected = false;
       KeyboardActions.onKeyUp(selectedKey);
     }
   },
 
   handleKeyPress: function(selectedKey) {
     return function() {
-      selectedKey.isSelected = true;
       KeyboardActions.onKeyPress(selectedKey);
     }
   },
@@ -39,13 +28,24 @@ var Key = connectToStores(React.createClass({
       'active': this.props.settings.isSelected
     });
 
-    return (<li className={keyClassName} onMouseDown={this.handleKeyPress(this.props.settings)} onMouseUp={this.handleKeyUp(this.props.settings)}>
-              <span>{this.props.settings.label}</span>
-            </li>)
+    if(window.ontouchstart) {
+      return (<li className={keyClassName}
+                  onTouchStart={this.handleKeyPress(this.props.settings)}
+                  onTouchEnd={this.handleKeyUp(this.props.settings)}>
+        <span>{this.props.settings.label}</span>
+      </li>)
+    } else {
+      return (<li className={keyClassName}
+                  onMouseDown={this.handleKeyPress(this.props.settings)}
+                  onMouseUp={this.handleKeyUp(this.props.settings)}>
+        <span>{this.props.settings.label}</span>
+      </li>)
+    }
   }
-}));
+});
 
 var Keyboard = React.createClass({
+
   propTypes: {
     keynotes: React.PropTypes.array
   },

@@ -11,16 +11,21 @@ var getKey = function(keyID) {
   return undefined;
 };
 
+var keyPlayingTimeout;
+
 class PianoActions {
+
   constructor() {
     this.generateActions(
       'onKeyPress',
       'onKeyUp'
     )
-  }
+  };
 
   playMusic(currentMusic, currentIndex) {
-    var key, stopTimeout, actions = this.actions;
+    var key,
+        actions = this.actions;
+
     Player.play();
 
     function playMusic(keyId, i) {
@@ -30,18 +35,20 @@ class PianoActions {
          Player.startNote(key, i);
          actions.onKeyPress(key);
 
-         stopTimeout = setTimeout(function () {
+         keyPlayingTimeout = setTimeout(function () {
            key.isSelected = false;
            Player.finishNote();
            actions.onKeyUp(key);
 
            if (i < currentMusic.notes.length - 1) {
-             playMusic(currentMusic.notes[i + 1].note, i + 1);
+             setTimeout(function() {
+               playMusic(currentMusic.notes[i + 1].note, i + 1);
+             }, 100);
            } else {
              actions.pauseMusic(currentMusic, currentIndex);
-             Player.finish();
+             actions.finishCurrentMusic();
            }
-         }, 500);
+         }, 400);
        }
     }
 
@@ -51,7 +58,13 @@ class PianoActions {
       playMusic(currentMusic.notes[0].note, 0);
     }
     return {currentIndex};
-  }
+  };
+
+  finishCurrentMusic() {
+    this.actions.onKeyUp(Player.currentKey);
+    Player.finish();
+    clearTimeout(keyPlayingTimeout);
+  };
 
   pauseMusic(currentMusic, currentIndex) {
     Player.finishNote();
@@ -59,7 +72,17 @@ class PianoActions {
 
     Player.pause();
     return {currentIndex};
-  }
+  };
+
+  nextMusic(nextMusic, nextIndex) {
+    this.actions.finishCurrentMusic();
+    this.actions.playMusic(nextMusic, nextIndex);
+  };
+
+  previousMusic(previousMusic, previousIndex) {
+    this.actions.finishCurrentMusic();
+    this.actions.playMusic(previousMusic, previousIndex);
+  };
 
 }
 module.exports = alt.createActions(PianoActions);

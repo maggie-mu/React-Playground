@@ -161,7 +161,7 @@ gulp.task('extras', function() {
 gulp.task('watch', ['html', 'fonts', 'bundle'], function() {
 
     browserSync({
-        port: 8080,
+        port: 8090,
         notify: false,
         logPrefix: 'BS',
         // Run as an https by uncommenting 'https: true'

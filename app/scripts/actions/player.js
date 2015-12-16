@@ -3,6 +3,7 @@
  */
 
 var Player = function () {
+  var AudioContext = window.AudioContext || window.webkitAudioContext;
   this.audioCtx = new AudioContext();
   this.mode = null;
   this.currentKey = null;
@@ -18,14 +19,16 @@ Player.prototype.pause = function() {
 };
 
 Player.prototype.finish = function() {
+  this.finishNote();
   this.currentKey = null;
   this.currentIndex = -1;
-    this.mode = null;
+  this.mode = null;
 }
 
 Player.prototype.startNote = function(key, index) {
   this.currentKey = key;
   this.currentIndex = index || this.currentIndex;
+
 
   this.osc = this.audioCtx.createOscillator();
   this.osc.type = 'triangle';
@@ -36,7 +39,10 @@ Player.prototype.startNote = function(key, index) {
 };
 
 Player.prototype.finishNote = function() {
-  this.osc.stop();
+  if(this.osc) {
+    this.osc.stop(0);
+    this.osc = null;
+  }
 };
 
 module.exports = new Player();
