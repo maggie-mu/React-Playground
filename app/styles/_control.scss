@@ -2,9 +2,6 @@
 @import "components/piano";
 
 .control-nav {
-  .navbar-header {
-    float: none!important;
-  }
   .navbar-toggle {
     display: block !important;
     float: right !important;
@@ -20,6 +17,7 @@
 
   .navbar-menu.collapse.in {
     display: block;
+    margin-top: 50px;
   }
 }
 .control-description {

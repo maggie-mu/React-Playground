@@ -2,7 +2,6 @@
 
 var React = require('react'),
     Utility = require('../utility');
-var serverUrl = 'http://localhost:3000/';
 
 var Milestones = React.createClass({
     getInitialState: function() {
@@ -13,7 +12,7 @@ var Milestones = React.createClass({
         var self = this;
 
         $.ajax({
-            url: serverUrl + 'milestones',
+            url: 'config/milestones.json',
             method: "GET",
             success: function(data) {
                 self.setState({list: data.milestones});

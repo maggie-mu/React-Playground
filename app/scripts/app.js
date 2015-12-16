@@ -1,5 +1,5 @@
 
-var serverUrl = 'http://localhost:3000/';
+//var serverUrl = 'http://localhost:3000/';
 
 var React = window.React = require('react'),
     Control = require("./control"),
@@ -38,7 +38,7 @@ $(document).ready(function() {
     $.cloudinary.config({ cloud_name: 'maggiemu', api_key: '575354932185368'});
 
     $.ajax({
-        url: serverUrl + 'controls',
+        url: 'config/controlsSetting.json',
         method: "GET",
         success: function(data) {
             if (data && data.items) {

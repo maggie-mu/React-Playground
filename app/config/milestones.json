@@ -1,0 +1,18 @@
+{
+  "milestones": [{
+    "title": "First Job",
+    "description": "Begin funding a retirement account and get a credit card "
+  },{
+    "title": "Getting Married",
+    "description": "Purchase first home"
+  },{
+    "title": "New child",
+    "description": "Develop a college savings plan and buy life insurance"
+  },{
+    "title": "Changing jobs",
+    "description": "Consolidate 401(k) assets from previous employers into a rollover IRA"
+  },{
+    "title": "Kids leave",
+    "description": "Finance college education"
+  }]
+}

@@ -28,7 +28,7 @@ var Key = React.createClass({
       'active': this.props.settings.isSelected
     });
 
-    if(window.ontouchstart) {
+    if('ontouchstart' in window) {
       return (<li className={keyClassName}
                   onTouchStart={this.handleKeyPress(this.props.settings)}
                   onTouchEnd={this.handleKeyUp(this.props.settings)}>

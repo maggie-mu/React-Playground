@@ -144,10 +144,10 @@ gulp.task('bower', function() {
 });
 
 gulp.task('json', function() {
-    gulp.src('app/scripts/json/**/*.json', {
-            base: 'app/scripts'
+    gulp.src('app/config/*.json', {
+            base: 'app/config'
         })
-        .pipe(gulp.dest('dist/scripts/'));
+        .pipe(gulp.dest('dist/config/'));
 });
 
 // Robots.txt and favicon.ico
@@ -173,7 +173,7 @@ gulp.task('watch', ['html', 'fonts', 'bundle'], function() {
     });
 
     // Watch .json files
-    gulp.watch('app/scripts/**/*.json', ['json']);
+    gulp.watch('app/config/*.json', ['json']);
 
     // Watch .html files
     gulp.watch('app/*.html', ['html']);

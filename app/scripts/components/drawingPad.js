@@ -41,7 +41,7 @@ var DrawingPad = React.createClass({
 
         fabric.util.loadImage(imageUrl, function(image) {
             var img = new fabric.Image(image);
-            var oImg = img.set({left: 10, top: 10, width: 537, height: 341});
+            var oImg = img.set({top: 10, width: 537, height: 341});
 
             oImg.lockMovementX = true;
             oImg.lockMovementY = true;
@@ -86,7 +86,7 @@ var DrawingPad = React.createClass({
                     <button type='button' className='btn btn-dark btn-drawing' onClick={this.handleDrawing}>Draw</button>
                     <button type='button' className='btn btn-dark btn-add-text' onClick={this.handleAddingText}>Add Text</button>
                     <button type='button' className='btn btn-dark btn-clear' onClick={this.clearDrawing}>Clear</button>
-                    <button type='button' className='btn btn-dark btn-save pull-right' onClick={this.saveDrawing}>Save</button>
+                    <button type='button' className='btn btn-dark btn-save hide' onClick={this.saveDrawing}>Save</button>
                 </div>
                 <canvas id='tools_sketch' width='900' height='400'></canvas>
                 <h3 className='hide'>The saved image is </h3>

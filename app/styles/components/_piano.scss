@@ -62,6 +62,8 @@ Styles of piano-control-panel
   margin-top: 10px;
   background-color: transparent;
   color: $piano-control-panel-color;
+  padding: 5px 15px;
+  font-size: 18px;
 }
 
 .piano-control-panel .btn-play {
@@ -88,7 +90,7 @@ ul.keyboard {
     border-bottom-right-radius: 4px;
   }
 
-  li.active {
+  .whiteKey.active {
     -moz-box-shadow:    inset 0 0 15px #444;
     -webkit-box-shadow: inset 0 0 15px #444;
     box-shadow:         inset 0 0 15px #444;
@@ -96,7 +98,7 @@ ul.keyboard {
     line-height: 443px;
 
     span {
-      font-size: 20pt;
+      font-size: 1.4em;
       font-weight: 800;
       color: $active-font-color;
     }
@@ -227,4 +229,77 @@ ul.music-notes-notes {
   .G5 {
     margin-top: -$music-note-line-height*2.5;
   }
+}
+
+//Ipad
+@media (max-width: 921px) {
+  .piano-control-panel-actions {
+    text-align: center;
+  }
+}
+
+@media (max-width: 767px) {
+    h3 {
+      font-size: 16px;
+    }
+
+    .navbar {
+      background-color: transparent;
+      border: none;
+      margin-top: -70px;
+    }
+
+    .navbar-brand {
+      display: none;
+    }
+
+    .piano-control-panel-screen {
+      height: 30px;
+      border-radius: 0;
+
+      span {
+        font-size: 9pt;
+        top: 5px;
+      }
+    }
+
+    .piano-control-panel {
+      padding: 0 0 5px 0;
+
+      .btn-play, .btn-step {
+        padding: 2px 4px;
+        font-size: 12px;
+      }
+    }
+    ul.keyboard {
+      margin: 0;
+
+      li {
+        height: 120px;
+        line-height: 200px;
+      }
+
+      .blackKey {
+        width: 10px !important;
+        margin-left: -5px !important;
+        height: 50px;
+      }
+
+      .whiteKey.active {
+        height: 119px;
+        line-height: 196px;
+      }
+    }
+    .music-notes {
+      display: none;
+      .music-notes-lines {
+        margin: 0;
+      }
+      .music-notes-notes {
+        padding: 0;
+        margin: 0;
+        left: 0;
+      }
+    }
+
 }

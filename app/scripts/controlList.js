@@ -47,14 +47,14 @@ var ControlList = React.createClass({
         };
         return <nav className="navbar navbar-default navbar-controls">
                   <div className="navbar-header">
-                    <button type="button" className="navbar-toggle collapsed" onClick={this.expandingNav} aria-expanded="false">
-                      <span className="sr-only">Toggle navigation</span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                      <span className="icon-bar"></span>
-                    </button>
                     <a className="navbar-brand" href="#">Select a control</a>
                   </div>
+                  <button className="navbar-toggle collapsed" onClick={this.expandingNav} aria-expanded="false">
+                    <span className="sr-only">Toggle navigation</span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                    <span className="icon-bar"></span>
+                  </button>
                   <div className={className}>
                     <ul className="nav navbar-nav list-group--dark">
                         {this.props.items.map(createItem)}

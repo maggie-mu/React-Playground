@@ -314,4 +314,10 @@ $milestone-card-padding: 10px;
   }
 }
 
+@media (max-width: 921px) {
+  .milestones {
+    min-height: 700px;
+  }
+}
+
 
