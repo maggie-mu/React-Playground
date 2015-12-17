@@ -21,7 +21,7 @@ var Piano = React.createClass({
     return (<div>
               <MusicNotes keynotes={this.props.keynotes}></MusicNotes>
               <div className="piano">
-                  <PianoControlPanel musicName={this.props.currentMusic.name}/>
+                  <PianoControlPanel/>
                   <Keyboard keynotes={this.props.keynotes}></Keyboard>
                </div>
             </div>)

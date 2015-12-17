@@ -1,5 +1,5 @@
 var alt = require('../alt'),
-    PianoActions = require('../actions/pianoActions'),
+    PianoActions = require('../actions/pianoControlPanelActions'),
     KeyboardActions = require('../actions/keyboardActions'),
     MusicSheets = require('../../config/musicSheets'),
     Keynotes = require('../../config/keynotes');
@@ -7,16 +7,10 @@ var alt = require('../alt'),
 class PianoStore {
   constructor() {
     this.state = {
-      keynotes: Keynotes,
-      isPlaying: false,
-      musicList: MusicSheets,
-      currentIndex: 0,
-      currentMusic: MusicSheets[0]
+      keynotes: Keynotes
     };
 
     this.bindListeners({
-      handlePlayMusic: PianoActions.playMusic,
-      handlePauseMusic: PianoActions.pauseMusic,
       handleKeyPress: [KeyboardActions.onKeyPress, PianoActions.onKeyPress],
       handleKeyUp: [KeyboardActions.onKeyUp, PianoActions.onKeyUp]
     });
@@ -28,20 +22,6 @@ class PianoStore {
         this.state.keynotes[i].isSelected = isSelected;
       }
     }
-  }
-
-  handlePlayMusic(options) {
-    this.setState({
-       isPlaying: true,
-       currentMusic: MusicSheets[options.currentIndex],
-       currentIndex: options.currentIndex
-    })
-  }
-
-  handlePauseMusic(options) {
-    this.setState({
-      isPlaying: false
-    })
   }
 
   handleKeyPress(key) {

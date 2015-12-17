@@ -46,7 +46,7 @@ class PianoActions {
              }, 100);
            } else {
              actions.pauseMusic(currentMusic, currentIndex);
-             actions.finishCurrentMusic();
+             actions.stopCurrentMusic();
            }
          }, 400);
        }
@@ -60,9 +60,9 @@ class PianoActions {
     return {currentIndex};
   };
 
-  finishCurrentMusic() {
+  stopCurrentMusic() {
     this.actions.onKeyUp(Player.currentKey);
-    Player.finish();
+    Player.stop();
     clearTimeout(keyPlayingTimeout);
   };
 
@@ -75,12 +75,12 @@ class PianoActions {
   };
 
   nextMusic(nextMusic, nextIndex) {
-    this.actions.finishCurrentMusic();
+    this.actions.stopCurrentMusic();
     this.actions.playMusic(nextMusic, nextIndex);
   };
 
   previousMusic(previousMusic, previousIndex) {
-    this.actions.finishCurrentMusic();
+    this.actions.stopCurrentMusic();
     this.actions.playMusic(previousMusic, previousIndex);
   };
 

@@ -18,7 +18,7 @@ Player.prototype.pause = function() {
   this.mode = 'pause';
 };
 
-Player.prototype.finish = function() {
+Player.prototype.stop = function() {
   this.finishNote();
   this.currentKey = null;
   this.currentIndex = -1;
