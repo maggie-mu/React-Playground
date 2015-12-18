@@ -37,7 +37,7 @@ class PianoActions {
 
          keyPlayingTimeout = setTimeout(function () {
            key.isSelected = false;
-           Player.finishNote();
+           Player.finishNote(key);
            actions.onKeyUp(key);
 
            if (i < currentMusic.notes.length - 1) {
@@ -48,7 +48,7 @@ class PianoActions {
              actions.pauseMusic(currentMusic, currentIndex);
              actions.stopCurrentMusic();
            }
-         }, 400);
+         }, 300);
        }
     }
 
@@ -67,7 +67,7 @@ class PianoActions {
   };
 
   pauseMusic(currentMusic, currentIndex) {
-    Player.finishNote();
+    Player.finishNote(Player.currentKey);
     this.actions.onKeyUp(Player.currentKey);
 
     Player.pause();

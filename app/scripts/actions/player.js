@@ -8,6 +8,7 @@ var Player = function () {
   this.mode = null;
   this.currentKey = null;
   this.currentIndex = -1;
+  this.oscMap = {};
 };
 
 Player.prototype.play = function() {
@@ -23,25 +24,31 @@ Player.prototype.stop = function() {
   this.currentKey = null;
   this.currentIndex = -1;
   this.mode = null;
+  this.oscMap = {};
+
 }
 
 Player.prototype.startNote = function(key, index) {
-  this.currentKey = key;
-  this.currentIndex = index || this.currentIndex;
+  if(index) {
+    this.currentKey = key;
+    this.currentIndex = index || this.currentIndex;
+  }
 
+  var osc = this.audioCtx.createOscillator();
+  osc.type = 'triangle';
+  osc.frequency.value = key.frequency;
+  osc.start(0);
 
-  this.osc = this.audioCtx.createOscillator();
-  this.osc.type = 'triangle';
-  this.osc.frequency.value = key.frequency;
-  this.osc.start(0);
+  osc.connect(this.audioCtx.destination);
 
-  this.osc.connect(this.audioCtx.destination);
+  this.oscMap[key.id] = osc;
 };
 
-Player.prototype.finishNote = function() {
-  if(this.osc) {
-    this.osc.stop(0);
-    this.osc = null;
+Player.prototype.finishNote = function(key) {
+  var key = key || this.currentKey;
+  if(this.oscMap[key.id]) {
+    this.oscMap[key.id].stop(0);
+    delete this.oscMap[key.id];
   }
 };
 

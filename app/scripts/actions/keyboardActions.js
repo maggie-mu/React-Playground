@@ -8,7 +8,7 @@ class KeyboardAction {
   }
 
   onKeyUp(key) {
-    Player.finishNote();
+    Player.finishNote(key);
    return key
   }
 

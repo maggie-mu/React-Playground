@@ -27,18 +27,19 @@ var Key = React.createClass({
     var keyClassName = classNames('key', this.props.settings.type, {
       'active': this.props.settings.isSelected
     });
+    var label = this.props.settings.type === 'whiteKey'? this.props.settings.label: ''
 
     if('ontouchstart' in window) {
       return (<li className={keyClassName}
                   onTouchStart={this.handleKeyPress(this.props.settings)}
                   onTouchEnd={this.handleKeyUp(this.props.settings)}>
-        <span>{this.props.settings.label}</span>
+        <span>{label}</span>
       </li>)
     } else {
       return (<li className={keyClassName}
                   onMouseDown={this.handleKeyPress(this.props.settings)}
                   onMouseUp={this.handleKeyUp(this.props.settings)}>
-        <span>{this.props.settings.label}</span>
+        <span>{label}</span>
       </li>)
     }
   }
